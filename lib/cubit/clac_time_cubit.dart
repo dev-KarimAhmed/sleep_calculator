@@ -5,15 +5,15 @@ import 'package:intl/intl.dart';
 
 part 'clac_time_state.dart';
 
-class ClacTimeCubit extends Cubit<ClacTimeState> {
-  ClacTimeCubit() : super(ClacTimeInitial());
+class CalcTimeCubit extends Cubit<CalcTimeState> {
+  CalcTimeCubit() : super(ClacTimeInitial());
   FixedExtentScrollController scrollControllerHours =
       FixedExtentScrollController();
   FixedExtentScrollController scrollControllerMin =
       FixedExtentScrollController();
   FixedExtentScrollController scrollControllera = FixedExtentScrollController();
 
-
+  bool isBedTime = true;
   String timeStyle() {
     int hour = scrollControllerHours.selectedItem;
     int minute = scrollControllerMin.selectedItem;
@@ -52,7 +52,7 @@ class ClacTimeCubit extends Cubit<ClacTimeState> {
     int hoursOnly = int.parse(stringTime.substring(0, 2));
 
     //to switch between am and pm
-    
+
     if (hourAP <= 12) {
       if (hourAP == 0) {
         return am
@@ -94,9 +94,7 @@ class ClacTimeCubit extends Cubit<ClacTimeState> {
       emit(BedTimeNow());
       return '${hoursOnly - 12}:$minuteAp Pm';
     }
-    
   }
-
 }
  
 //${hour + Duration(hours: 1, minutes: minutes + 45)}

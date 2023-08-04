@@ -6,7 +6,6 @@ import '../components/custom_button.dart';
 import '../components/custom_list_scroll.dart';
 import '../constants/colors.dart';
 import '../cubit/clac_time_cubit.dart';
-import 'bedtime_now_view.dart';
 import 'bedtime_view.dart';
 
 class HomePage extends StatelessWidget {
@@ -93,7 +92,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ClacTimeCubit, ClacTimeState>(builder: (context, state) {
+    return BlocBuilder<CalcTimeCubit, CalcTimeState>(builder: (context, state) {
       return Scaffold(
         appBar: null,
         body: SafeArea(
@@ -142,7 +141,7 @@ class HomePage extends StatelessWidget {
                                 children: [
                                   CustomListWheelScrollView(
                                     scrollController:
-                                        BlocProvider.of<ClacTimeCubit>(context)
+                                        BlocProvider.of<CalcTimeCubit>(context)
                                             .scrollControllerHours,
                                     list: hours,
                                     itemExtent: 20,
@@ -151,7 +150,7 @@ class HomePage extends StatelessWidget {
                                   ),
                                   CustomListWheelScrollView(
                                     scrollController:
-                                        BlocProvider.of<ClacTimeCubit>(context)
+                                        BlocProvider.of<CalcTimeCubit>(context)
                                             .scrollControllerMin,
                                     list: minutes,
                                     itemExtent: 20,
@@ -164,7 +163,7 @@ class HomePage extends StatelessWidget {
                                     magnification: 1.5,
                                     useMagnifier: true,
                                     scrollController:
-                                        BlocProvider.of<ClacTimeCubit>(context)
+                                        BlocProvider.of<CalcTimeCubit>(context)
                                             .scrollControllera,
                                   ),
                                 ],
@@ -183,6 +182,7 @@ class HomePage extends StatelessWidget {
                   ),
                   CustomButton(
                     onTap: () {
+                      BlocProvider.of<CalcTimeCubit>(context).isBedTime = true;
                       Navigator.pushNamed(context, BedtimeView.id);
                     },
                     data: 'Calculate BedTime',
@@ -196,8 +196,8 @@ class HomePage extends StatelessWidget {
                   ),
                   CustomButton(
                     onTap: () {
-                     
-                      Navigator.pushNamed(context, BedtimeViewNow.id);
+                      BlocProvider.of<CalcTimeCubit>(context).isBedTime = false;
+                      Navigator.pushNamed(context, BedtimeView.id);
                     },
                     data: 'Calculate wake-up time',
                   ),

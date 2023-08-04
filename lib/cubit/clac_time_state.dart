@@ -1,9 +1,10 @@
 part of 'clac_time_cubit.dart';
 
 @immutable
-abstract class ClacTimeState {}
+abstract class CalcTimeState {}
 
-class ClacTimeInitial extends ClacTimeState {}
-class BedTime extends ClacTimeState {}
-class BedTimeNow extends ClacTimeState {}
+class ClacTimeInitial extends CalcTimeState {}
 
+class BedTime extends CalcTimeState {}
+
+class BedTimeNow extends CalcTimeState {}
