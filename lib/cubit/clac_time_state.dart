@@ -5,6 +5,3 @@ abstract class CalcTimeState {}
 
 class ClacTimeInitial extends CalcTimeState {}
 
-class BedTime extends CalcTimeState {}
-
-class BedTimeNow extends CalcTimeState {}
