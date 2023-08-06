@@ -86,12 +86,29 @@ class CalcTimeCubit extends Cubit<CalcTimeState> {
     //to switch between am and pm
     if (hourAP < 12) {
       if (hourAP == 0) {
-        return '${hoursOnly + 12}:$minuteAp Am';
+        return minuteAp < 10
+            ? '${hoursOnly + 12}:0$minuteAp Am'
+            : '${hoursOnly + 12}:$minuteAp Am';
       }
-      return '$hoursOnly:$minuteAp Am';
+      if (hourAP == 12) {
+        return minuteAp < 10
+            ? '$hoursOnly:0$minuteAp Pm'
+            : '$hoursOnly:$minuteAp Pm';
+      } else {
+        return minuteAp < 10
+            ? '$hoursOnly:0$minuteAp Am'
+            : '$hoursOnly:$minuteAp Am';
+      }
     } else {
-      return '${hoursOnly - 12}:$minuteAp Pm';
+      if (hourAP == 12) {
+        return minuteAp < 10
+            ? '$hoursOnly:0$minuteAp Pm'
+            : '$hoursOnly:$minuteAp Pm';
+      } else {
+        return minuteAp < 10
+            ? '${hoursOnly - 12}:0$minuteAp Pm'
+            : '${hoursOnly - 12}:$minuteAp Pm';
+      }
     }
   }
 }
- 

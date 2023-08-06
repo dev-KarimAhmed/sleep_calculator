@@ -78,7 +78,7 @@ class BedtimeView extends StatelessWidget {
                             numberOfCycles: 'Five Cycles',
                             data: BlocProvider.of<CalcTimeCubit>(context)
                                 .bedTime(7, 45),
-                            width: MediaQuery.of(context).size.width * 0.45,
+                            width: MediaQuery.of(context).size.width * 0.5,
                             isSuggested: true,
                           ),
                           CustomContainer(
